@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css"/>
+    <title>Theatre</title>
+    <style>
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr;
+  grid-template-rows: 2fr 2fr 2fr 2fr 2fr 2fr 2fr;
+  gap: 5px 5px;
+}
+
+.seat-details {
+  display: flex;
+  justify-content: space-around;
+}
+
+.seats-occupied {
+  font-weight: bold;
+  text-align: center;
+}
+
+.seats-remaining {
+  font-weight: bold;
+  text-align: center;
+}
+
+.seat {
+  height: auto;
+  width: auto;
+  background-color:olivedrab;
+  border: 1px solid white;
+}
+
+.booked {
+  background-color:maroon;
+}
+h2,p{
+    color:papayawhip;
+}
+
+</style>
+</head>
+  
+  <body>
+    <div class="seat-details">
+      <div class="seat-occupied-container">
+        <h2>Seats Occupied</h2>
+        <p class="seats-occupied">0</p>
+      </div>
+      <div class="seat-remaining-container">
+        <h2>Seats Remaining</h2>
+        <p class="seats-remaining">42</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="seat"></div>
+      <div class="seat"></div>
+      <div class="seat"></div>
+      <div class="seat"></div>
+      <div class="seat"></div>
+      <div class="seat"></div>
+      <div class="seat"></div>
+      <div class="seat"></div>
+      <div class="seat"></div>
+      <div class="seat"></div>
+      <div class="seat"></div>
+      <div class="seat"></div>
+      <div class="seat"></div>
+      <div class="seat"></div>
+      <div class="seat"></div>
+      <div class="seat"></div>
+      <div class="seat"></div>
+      <div class="seat"></div>
+      <div class="seat"></div>
+      <div class="seat"></div>
+      <div class="seat"></div>
+      
+    </div>
+    <script>
+        const seatsRemaining = document.querySelector(".seats-remaining");
+  const seatsOccupied = document.querySelector(".seats-occupied");
+  const seatContainer = document.querySelector(".container");
+  let seatsOccupiedCount = 0;
+  let seatsRemainingCount = 42;
+  
+  seatContainer.addEventListener("click", (e) => {
+    if (e.target.classList.contains("seat")) {
+      if (e.target.classList.contains("booked")) {
+        alert("Sorry!! This seat is already booked");
+      } else {
+        const confirmation = confirm("Click Ok to confirm your seat?");
+        if (confirmation == true) {
+          e.target.classList.add("booked");
+          seatsOccupiedCount++;
+          seatsRemainingCount--;
+          console.log(seatsOccupiedCount);
+          console.log(seatsRemainingCount);
+          seatsOccupied.innerHTML = seatsOccupiedCount;
+          seatsRemaining.innerHTML = seatsRemainingCount;
+        }
+      }
+    }
+  });
+    </script>
+  
+  </body>
+  </html>

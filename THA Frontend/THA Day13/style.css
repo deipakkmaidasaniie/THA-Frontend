@@ -1,0 +1,13 @@
+*{
+    background-color: aqua;
+}
+.container{
+    color:black;
+    height:200px;
+    width:400px;
+}
+.joke{
+    color:black;
+    height:100px;
+    width:200px;
+}

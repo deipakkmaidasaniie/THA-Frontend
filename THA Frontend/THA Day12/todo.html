@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/fontawesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+<style>
+    .heading{
+        height:100px;
+        width:100%;
+        background-color: darkgoldenrod;
+    }
+    .note{
+        height:200px;
+        width:400px;
+        background-color: khaki;
+    }
+    .text{
+        background-color: khaki;
+        position: relative;
+        height:100px;
+        width:90%;
+        border: khaki;
+        
+    }
+    .main{
+        background-color: lightcoral;
+    }
+    .hidden{
+        display: hidden;
+    }
+</style>
+</head>
+<body>
+    <div class="heading">
+        <h1 style="padding:20px"><i class="fas fa-sticky-note"></i> My Todo</h1>
+    </div>
+    <div class="btndiv">
+        <button class="btn" id="btn" style="margin:20px"><i class="fas fa-calendar-plus"></i>Add Note</button>
+    </div>
+
+   <!-- <div class="note">
+        <div class="operation">
+            <button class="edit" style="margin:20px"><i class="fas fa-edit"></i>Edit</button>
+            <button class="delete" style="margin:20px"><i class="fas fa-trash"></i>Button</button>
+            
+        </div>
+        <div class="main">
+            <textarea class ="text"></textarea>
+        </div>
+    </div>-->
+    <script>
+        const addNote=(text='deepak')=>{
+            const note=document.createElement('div');
+            note.classList.add('note');
+            const htmldata=`
+        <div class="operation">
+            <button class="edit" style="margin:20px"><i class="fas fa-edit"></i>Edit</button>
+            <button class="delete" style="margin:20px"><i class="fas fa-trash"></i>Delete</button>
+            
+        </div>
+        <div class="main ${text ?"":"hidden"}">This is a main class </div>
+            <textarea class ="${text?"hidden":""}"></textarea>
+       
+     `
+    note.insertAdjacentHTML('afterbegin',htmldata);
+    //console.log(note);
+
+        const edit=note.querySelector(".edit");
+        const del=note.querySelector(".delete");
+        const main=note.querySelector(".main");
+        const textelem=note.querySelector(".text");
+        //alert(note.querySelector(".edit"));
+        
+       del.addEventListener('click',()=>{
+            note.remove();
+        });
+        
+
+
+        document.body.appendChild(note);
+
+
+
+
+
+        }
+
+        const Addbtn=document.querySelector("#btn");
+        Addbtn.addEventListener('click',()=>{addNote()});
+
+    </script>
+</body>
+</html>
