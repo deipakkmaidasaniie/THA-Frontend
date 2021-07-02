@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS </title>
+    <style>
+        :root {
+            --color-primary: red;
+            --color-primary-light: #E24E3F;
+            --active-color: white;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .grid {
+            max-width: 400px;
+            width: 80%;
+            height: 65vh;
+            display: grid;
+            grid-template-columns: repeat(20, 1fr);
+            background-color: var(--color-primary);
+        }
+
+        .grid-item {
+            border: 1px solid var(--color-primary-light);
+        }
+
+        .grid-item:hover {
+            background-color: var(--color-primary-light);
+        }
+
+        .active,
+        .active:hover {
+            border: 1px solid var(--active-color);
+            background-color: var(--active-color);
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <div class="grid"></div>
+    </main>
+    <script>
+        const create = () => {
+            const conatainer = document.querySelector(".grid");
+            for (let i = 0; i < 400; i++) {
+                const cell = document.createElement("div");
+                cell.classList.add("grid-item");
+                cell.id = `${i}`;
+                cell.addEventListener('click', () => { changeState(cell) });
+                conatainer.append(cell);
+            }
+        };
+
+        create();
+        const changeState = (cell) => {
+            cell.classList.toggle("active");
+        };
+        const markActiveCell = () => {
+            const actives = [
+                130, 131, 149, 150, 151, 152, 168, 169, 170, 171, 172, 173, 187, 188, 190,
+                191, 193, 194, 207, 208, 209, 210, 211, 212, 213, 214, 229, 232, 248, 250,
+                251, 253, 267, 269, 272, 274,
+            ];
+            for (let id of actives) {
+                const active = document.getElementById(`${id - 1}`);
+                active.classList.add("active");
+
+            }
+        };
+        markActiveCell();
+    </script>
+</body>
+
+</html>
