@@ -1,4 +1,4 @@
-function generateJoke()
+function generate()
 {
 const setHeader={
     headers:{
@@ -8,7 +8,7 @@ const setHeader={
 
 
 fetch("https://icanhazdadjoke.com",setHeader).then((res)=>res.json()).then((data)=>{
-jokes.innerHTML=data.joke;
+jokes.innerHTML=data.content;
 })
 .catch((error)=>{
     console.log(error);
